@@ -96,5 +96,13 @@ int remove_data() {
         return 0;
     }
     printf("[-] quick_sort.h/remove_data() - time_complexity.data could not be deleted.\n");
+    printf("[*] quick_sort.h/remove_data() - Attempting fix. Creating time_complexity.data.\n");
+
+    if (fopen("time_complexity.data", "w") == 0) {
+        printf("[+] quick_sort.h/remove_data() - time_complexity.data successfuly created.\n");
+        return 0;
+    }
+    printf("[-] quick_sort.h/remove_data() - time_complexity.data could not be created.\n");
+
     return -1;
 }
