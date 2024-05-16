@@ -12,22 +12,25 @@ If you're on Windows, the name of the file will be "generate_data.exe"
 - cd ./data
 
 Feel free to save the shown graph into a png. This will be automatized in the future.
+If you wish to use docker, you can either build it yourself or pull it.
+
+Note: You WILL have to use interactive terminal, for now...
+
+Build it:
+sudo docker build -t time_complexity_data .
+
+Pull it:
+sudo docker pull maya1248/time_complexity_data
+
+
 
 File hierarchy:
-
 /bin - Compiled binaries
-
 /data - Final results, data
-
 /src/C - Source C code
-
 /src/Python - Source Python code
-
 /tmp - Temporary files that change rapidly are stored here
 
-
 /Makefile - For compiling source C code
-
 /README.md - Intro into the project.
-
-/HowTo.md - This file.
+/HowTo.txt - This file.
