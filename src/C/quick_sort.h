@@ -98,10 +98,13 @@ int remove_data() {
     printf("[-] quick_sort.h/remove_data() - time_complexity.data could not be deleted.\n");
     printf("[*] quick_sort.h/remove_data() - Attempting fix. Creating time_complexity.data.\n");
 
-    if (fopen("time_complexity.data", "w") == 0) {
+    FILE* file = fopen("../data/time_complexity.data", "w");
+    if (file == 0) {
         printf("[+] quick_sort.h/remove_data() - time_complexity.data successfuly created.\n");
+        fclose(file);
         return 0;
     }
+    fclose(file);
     printf("[-] quick_sort.h/remove_data() - time_complexity.data could not be created.\n");
 
     return -1;

@@ -9,6 +9,5 @@ COPY . .
 
 # Install dependencies
 RUN apt update && \
-    apt install -y make gcc Python3
+    apt install -y make gcc python3
 
-    

@@ -3,11 +3,12 @@ You need:
 
 Running:
 - make
-- ./bin/generate_data
+- cd ./bin
+- ./generate_data
 
 If you're on Windows, the name of the file will be "generate_data.exe"
 
-- Python3 ./src/Python/graph.py
+- python3 ./src/Python/graph.py
 - cd ./data
 
 Feel free to save the shown graph into a png. This will be automatized in the future.
@@ -27,6 +28,6 @@ File hierarchy:
 
 /Makefile - For compiling source C code
 
-/README.md - This file.
+/README.md - Intro into the project.
 
-
+/HowTo.md - This file.
