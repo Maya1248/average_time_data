@@ -27,7 +27,7 @@ int create_data(int amount) {
     FILE* file = fopen("../tmp/list.txt", "r");
 
     if (file == NULL) {
-        printf("[-] quick_sort.h/create_data() - list.txt could not be opened/read.\n");
+        printf("[-] data_generator.h/create_data() - list.txt could not be opened/read.\n");
         return -1;
     }
     
@@ -53,7 +53,7 @@ int create_data(int amount) {
     file = fopen("../data/time_complexity.data", "a");
 
     if (file == NULL) {
-        printf("[-] quick_sort.h/create_data() - time_complexity.data could not be opened.\n");
+        printf("[-] data_generator.h/create_data() - time_complexity.data could not be opened.\n");
         return -1;
     }
 
@@ -68,17 +68,17 @@ int remove_data() {
     if (remove("../data/time_complexity.data") == 0) {
         return 0;
     }
-    printf("[-] quick_sort.h/remove_data() - time_complexity.data could not be deleted.\n");
-    printf("[*] quick_sort.h/remove_data() - Attempting fix. Creating time_complexity.data.\n");
+    printf("[-] data_generator.h/remove_data() - time_complexity.data could not be deleted.\n");
+    printf("[*] data_generator.h/remove_data() - Attempting fix. Creating time_complexity.data.\n");
 
     FILE* file = fopen("../data/time_complexity.data", "w");
-    if (file == 0) {
-        printf("[+] quick_sort.h/remove_data() - time_complexity.data successfuly created.\n");
+    if (file != NULL) {
+        printf("[+] data_generator.h/remove_data() - time_complexity.data successfuly created.\n");
         fclose(file);
         return 0;
     }
     fclose(file);
-    printf("[-] quick_sort.h/remove_data() - time_complexity.data could not be created.\n");
+    printf("[-] data_generator.h/remove_data() - time_complexity.data could not be created.\n");
 
     return -1;
 }
