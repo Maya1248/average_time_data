@@ -1,5 +1,6 @@
 #include "random_generator.h" // also includes all the other necessary libraries
-#include "quick_sort.h"
+//#include "quick_sort.h"
+#include "bubble_sort.h"
 
 #define BUFFER_SIZE 64
 
@@ -45,7 +46,8 @@ int create_data(int amount) {
 
     start = clock();
 
-    quick_sort(unsorted_list, 0, amount, amount);   
+    //quick_sort(unsorted_list, 0, amount, amount);   
+    bubble_sort(unsorted_list, amount);
 
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;

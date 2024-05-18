@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-filename = "./data/time_complexity.data"
+filename = "./data/average_time.data"
 
 t = [] # time
 x = [] # amount
