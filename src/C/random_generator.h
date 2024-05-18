@@ -4,14 +4,15 @@
 #include <string.h>
 
 int generate_number(int low, int high) {
-    time_t seconds;
-    time(&seconds);
-    srand((unsigned) seconds);
-
     return (rand() % (high - low + 1)) + low;
 }
 
 int generate_list_file(int low, int high, int amount) {
+
+    time_t seconds;
+    time(&seconds);
+    srand((unsigned) seconds);
+
     FILE* file = fopen("../tmp/list.txt", "w");
     if (file == NULL) {
         printf("[-] random_generator.h/generate_list_file() - list.txt could not be created/opened.\n");
