@@ -50,10 +50,10 @@ int create_data(int amount) {
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     
-    file = fopen("../data/time_complexity.data", "a");
+    file = fopen("../data/average_time.data", "a");
 
     if (file == NULL) {
-        printf("[-] data_generator.h/create_data() - time_complexity.data could not be opened.\n");
+        printf("[-] data_generator.h/create_data() - average_time.data could not be opened.\n");
         return -1;
     }
 
@@ -65,20 +65,20 @@ int create_data(int amount) {
 }
 
 int remove_data() {
-    if (remove("../data/time_complexity.data") == 0) {
+    if (remove("../data/average_time.data") == 0) {
         return 0;
     }
-    printf("[-] data_generator.h/remove_data() - time_complexity.data could not be deleted.\n");
-    printf("[*] data_generator.h/remove_data() - Attempting fix. Creating time_complexity.data.\n");
+    printf("[-] data_generator.h/remove_data() - average_time.data could not be deleted.\n");
+    printf("[*] data_generator.h/remove_data() - Attempting fix. Creating average_time.data.\n");
 
-    FILE* file = fopen("../data/time_complexity.data", "w");
+    FILE* file = fopen("../data/average_time.data", "w");
     if (file != NULL) {
-        printf("[+] data_generator.h/remove_data() - time_complexity.data successfuly created.\n");
+        printf("[+] data_generator.h/remove_data() - average_time.data successfuly created.\n");
         fclose(file);
         return 0;
     }
     fclose(file);
-    printf("[-] data_generator.h/remove_data() - time_complexity.data could not be created.\n");
+    printf("[-] data_generator.h/remove_data() - average_time.data could not be created.\n");
 
     return -1;
 }

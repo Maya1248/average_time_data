@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     }
 
     if (strcmp(argv[3], "y") == 0) {
-        printf("[*] generate_data/main() - Deleting time_complexity.data ...\n");
+        printf("[*] generate_data/main() - Deleting average_time.data ...\n");
         remove_data();
     }
 
