@@ -1,8 +1,7 @@
-void swap(int* a, int* b) {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
+#ifndef COMMON_MICRO_METHODS_H
+#define COMMON_MICRO_METHODS_H
+#include "common_micro_methods.h"
+#endif
 
 void bubble_sort(int* list, int length) {
     int i=0;

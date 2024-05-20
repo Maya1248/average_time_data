@@ -1,12 +1,12 @@
 #ifndef STDLIB_H
+#define STDLIB_H
 #include <stdlib.h>
 #endif
 
-void swap(int* a, int* b) {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
+#ifndef COMMON_MICRO_METHODS_H
+#define COMMON_MICRO_METHODS_H
+#include "common_micro_methods.h"
+#endif
 
 int* merge_left_and_right(int* left_half, int* right_half, int left_length, int right_length) {
     int i=0;

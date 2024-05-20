@@ -7,12 +7,15 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    char* path = (char*) malloc(100 * sizeof(char));
+    char* data_path = (char*) malloc(100 * sizeof(char));
+    int sorter;
     if (strcmp(argv[1], "bubble_sort") == 0) {
-        strcpy(path, "../data/bubble_sort_data/average_time.data");
+        strcpy(data_path, "../data/bubble_sort_data/average_time.data");
+        sorter = 0;
 
     } else if (strcmp(argv[1], "merge_sort") == 0) {
-        strcpy(path, "../data/merge_sort_data/average_time.data");
+        strcpy(data_path, "../data/merge_sort_data/average_time.data");
+        sorter = 1;
 
     } else {
         printf("[-] Error. Invalid sorting method.\n");
@@ -25,21 +28,25 @@ int main(int argc, char** argv) {
 
     if (strcmp(argv[4], "y") == 0) {
         printf("[*] generate_data/main() - Deleting average_time.data ...\n");
-        remove_data(path);
+        remove_data(data_path);
     }
 
-    int from = atoi(argv[1]);
-    int upTo = atoi(argv[2]);
+    int from = atoi(argv[2]);
+    int upTo = atoi(argv[3]);
     int checkError;
 
+    printf("[*] Generating data...\n");
+
     for (int i=from+1; i<upTo; i++) {
-        checkError = create_data(i, path);
+        checkError = create_data(i, data_path, sorter);
+
         if (checkError != 0) {  // undefined error on opening the list.txt
+            printf("[-] generate_data.c/main() - Undefined error occured\n");
             return -1;  // data remains non-corrupted, re start the program with its corresponding last input.
         }
     }
 
-    free(path);
+    free(data_path);
 
     return 0;
 }

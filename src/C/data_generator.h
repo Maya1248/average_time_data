@@ -1,6 +1,6 @@
 #include "random_generator.h" // also includes all the other necessary libraries
 //#include "quick_sort.h"
-//#include "bubble_sort.h"
+#include "bubble_sort.h"
 #include "merge_sort.h"
 
 #define BUFFER_SIZE 64
@@ -12,7 +12,7 @@ void print_list(int* list, int length) {
     printf("\n");
 }
 
-int create_data(int amount, char* path) {
+int create_data(int amount, char* path, int sorter) {
     clock_t start, end;
     double cpu_time_used;
 
@@ -34,7 +34,7 @@ int create_data(int amount, char* path) {
     
     while (fgets(buffer, BUFFER_SIZE, file) != NULL) {
         if (sscanf(buffer, "%d", &number) == 1) {
-            unsorted_list[counter] = number;
+            *(unsorted_list+counter) = number;
             counter++;
         } else {
             printf("[-] Error: Non-integer character detected.\n");
@@ -46,31 +46,20 @@ int create_data(int amount, char* path) {
 
     start = clock();
 
-    //quick_sort(unsorted_list, 0, amount, amount);   
-    //bubble_sort(unsorted_list, amount);
-    unsorted_list = merge_sort(unsorted_list, amount);  // returns a sorted list.
-
+    if (sorter == 0) {
+        bubble_sort(unsorted_list, amount);  // returns void...
+    } else if (sorter == 1) {
+        unsorted_list = merge_sort(unsorted_list, amount);  // returns a sorted list.
+    }
+    
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     
     file = fopen(path, "a");
-
-    if (file == NULL) {
-        printf("[-] data_generator.h/create_data() - average_time.data could not be opened.\n");
-        printf("[*] data_generator.h/create_data() - Attempting fix. Creating average_time.data\n");
-        
-        file = fopen(path, "w");
-        if (file == NULL) {
-            printf("[-] data_generator.h/create_data() - Fix failed. Could not create average_time.data\n");
-            return -1;
-        }
-    }
-
     fprintf(file, "%d,%f\n", amount, cpu_time_used);
-
     fclose(file);
-    free(unsorted_list);
 
+    free(unsorted_list);
     return 0;
 }
 
