@@ -35,9 +35,18 @@ int main(int argc, char** argv) {
     int upTo = atoi(argv[3]);
     int checkError;
 
+    if (from < 2) {
+        printf("generate_data.c/main() - Invalid argument <from>\n");
+        return -1;
+    }
+    if (upTo <= from) {
+        printf("generate_data.c/main() - Invalid argument <upTo>\n");
+        return -1;
+    }
+
     printf("[*] Generating data...\n");
 
-    for (int i=from+1; i<upTo; i++) {
+    for (int i=from; i<upTo; i++) {
         checkError = create_data(i, data_path, sorter);
 
         if (checkError != 0) {  // undefined error on opening the list.txt

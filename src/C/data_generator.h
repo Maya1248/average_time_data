@@ -53,6 +53,19 @@ int create_data(int amount, char* path, int sorter) {
     }
     
     file = fopen(path, "a");
+    if (file == NULL) {
+        printf("[-] data_generator.h/create_data() - Unable to open average_time.data\n");
+        printf("[*] data_generator.h/create_data() - Attempting quick fix\n");
+        
+        file = fopen(path, "w");
+        if (file == NULL) {
+            printf("[-] data_generator.h/create_data() - Unable to create the file...\n");
+            return -1;
+        }
+
+        return -1;
+    }
+
     fprintf(file, "%d,%f\n", amount, cpu_time_used);
     fclose(file);
 
