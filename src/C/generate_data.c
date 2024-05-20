@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
     if (strcmp(argv[1], "bubble_sort") == 0) {
         strcpy(path, "../data/bubble_sort_data/average_time.data");
 
-    } else if (strcmp(argv[1], "merge_sort" == 0)) {
+    } else if (strcmp(argv[1], "merge_sort") == 0) {
         strcpy(path, "../data/merge_sort_data/average_time.data");
 
     } else {

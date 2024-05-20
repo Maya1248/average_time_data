@@ -1,6 +1,10 @@
 from matplotlib import pyplot as plt
+import sys
 
-filename = "./data/average_time.data"
+if len(sys.argv) != 2:
+	print("[-] You need to add a name of the sorter used!")
+	exit()
+filename = "./data/" + str(sys.argv[1]) + "/average_time.data"
 
 t = [] # time
 x = [] # amount
