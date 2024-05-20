@@ -59,7 +59,8 @@ int create_data(int amount, char* path) {
         printf("[-] data_generator.h/create_data() - average_time.data could not be opened.\n");
         printf("[*] data_generator.h/create_data() - Attempting fix. Creating average_time.data\n");
         
-        if ((file = fopen(path, "w")) == NULL) {
+        file = fopen(path, "w");
+        if (file == NULL) {
             printf("[-] data_generator.h/create_data() - Fix failed. Could not create average_time.data\n");
             return -1;
         }
