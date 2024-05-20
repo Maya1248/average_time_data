@@ -5,13 +5,6 @@
 
 #define BUFFER_SIZE 64
 
-void print_list(int* list, int length) {
-    for (int i=0; i<length; i++) {
-        printf("%d ", list[i]);
-    }
-    printf("\n");
-}
-
 int create_data(int amount, char* path, int sorter) {
     clock_t start, end;
     double cpu_time_used;
@@ -55,7 +48,7 @@ int create_data(int amount, char* path, int sorter) {
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (check_if_sorted(unsorted_list, amount) != 0) {
-        return -1;
+        return 1;
     }
     
     file = fopen(path, "a");
