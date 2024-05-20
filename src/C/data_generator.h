@@ -54,6 +54,9 @@ int create_data(int amount, char* path, int sorter) {
     
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    if (check_if_sorted(unsorted_list, amount) != 0) {
+        return -1;
+    }
     
     file = fopen(path, "a");
     fprintf(file, "%d,%f\n", amount, cpu_time_used);
