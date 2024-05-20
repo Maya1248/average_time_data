@@ -10,8 +10,8 @@ int create_data(int amount, char* path, int sorter) {
     double cpu_time_used;
 
     int counter=0, number;
-    //int unsorted_list[amount];
     int* unsorted_list = (int*) malloc(amount * sizeof(int));
+    int* sorted_list; // necessary so we can free both the unsorted list and the sorted list that is returned. fixes memory leak...
 
     if (generate_list_file(-10000, 10000, amount) != 0) {
         return -1;
@@ -42,12 +42,13 @@ int create_data(int amount, char* path, int sorter) {
     if (sorter == 0) {
         bubble_sort(unsorted_list, amount);  // returns void...
     } else if (sorter == 1) {
-        unsorted_list = merge_sort(unsorted_list, amount);  // returns a sorted list.
+        sorted_list = merge_sort(unsorted_list, amount);  // returns a sorted list.
     }
     
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    if (check_if_sorted(unsorted_list, amount) != 0) {
+    
+    if (check_if_sorted(sorted_list, amount) != 0) {
         return 1;
     }
     
@@ -56,6 +57,7 @@ int create_data(int amount, char* path, int sorter) {
     fclose(file);
 
     free(unsorted_list);
+    free(sorted_list);
     return 0;
 }
 
