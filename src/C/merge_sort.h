@@ -75,22 +75,32 @@ int* merge_sort(int* list, int length) {
         return list;
     }
 
-
     // Create new lists for each half
     int* left_half = (int*) malloc((length / 2) * sizeof(int));
     int* right_half = (int*) malloc((length - (length / 2)) * sizeof(int));
 
     // Fill out the lists
+    int c=0;
     for (int i=0; i<length/2; i++) {
-        *(left_half+i) = *(list+i);
+        *(left_half+i) = *(list+c);
+        c++;
     }
-    for (int i=length/2; i<length - length/2; i++) {
-        *(right_half+i) = *(list+i);
+    for (int i=0; i<length - length/2; i++) {
+        *(right_half+i) = *(list+c);
+        c++;
     }
 
     // Perform recursion step 1.
-    left_half = merge_sort(left_half, length/2);
-    right_half = merge_sort(right_half, length - length/2);
+    int* sorted_left_half;
+    int* sorted_right_half;
+    sorted_left_half = merge_sort(left_half, length/2);
+    sorted_right_half = merge_sort(right_half, length - length/2);
+    if (left_half != sorted_left_half) {
+        free(left_half);
+    }
+    if (right_half != sorted_right_half) {
+        free(right_half);
+    }
 
-    return merge_left_and_right(left_half, right_half, length/2, length - length/2);
+    return merge_left_and_right(sorted_left_half, sorted_right_half, length/2, length - length/2);
 }

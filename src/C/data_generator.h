@@ -69,8 +69,14 @@ int create_data(int amount, char* path, int sorter) {
     fprintf(file, "%d,%f\n", amount, cpu_time_used);
     fclose(file);
 
-    free(unsorted_list);
-    free(sorted_list);
+    if (unsorted_list == sorted_list) { // if no merged lists are created because the unsorted list is extremely small, size of 2 or so... this condition flips. to evade double free();
+        free(sorted_list);
+        return 0;
+    } else {
+        free(unsorted_list);
+        free(sorted_list);
+    }
+
     return 0;
 }
 
