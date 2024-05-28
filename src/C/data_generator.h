@@ -36,11 +36,13 @@ int create_data(int amount, char* path, int sorter) {
     }
     fclose(file);
 
-
+    int returned_void = 0;
     start = clock();
 
     if (sorter == 0) {
         bubble_sort(unsorted_list, amount);  // returns void...
+        sorted_list = unsorted_list;
+        returned_void = 1;
     } else if (sorter == 1) {
         sorted_list = merge_sort(unsorted_list, amount);  // returns a sorted list.
     }
